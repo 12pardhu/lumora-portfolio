@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#f5f3ed">
+  <meta name="theme-color" content="#f7f7f4">
   <meta name="description" content="LUMORA — Thoughtful connections. Meaningful possibilities.">
   <title>LUMORA — Thoughtful Connections</title>
 
@@ -14,284 +14,265 @@
 
   <style>
     :root {
-      --paper: #f5f3ed;
-      --white: #fffefa;
-      --ink: #20251f;
-      --muted: #73776d;
-      --olive: #626d45;
-      --lime: #d5e58c;
-      --line: rgba(32,37,31,.13);
-      --dark: #222820;
+      --bg: #f7f7f4;
+      --white: #fff;
+      --ink: #171916;
+      --muted: #777b72;
+      --green: #667653;
+      --line: #e6e7df;
+      --dark: #171b17;
       --serif: Georgia, serif;
+      --sans: "DM Sans", sans-serif;
+      --display: "Manrope", sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      background: var(--paper);
+      background: var(--bg);
       color: var(--ink);
-      font-family: "DM Sans", sans-serif;
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
     }
+
     a { color: inherit; text-decoration: none; }
-    button, input, textarea, select { font: inherit; }
-    button, a { -webkit-tap-highlight-color: transparent; }
+    button, input, select, textarea { font: inherit; }
 
     .announcement {
       background: var(--dark);
-      color: #e8eadf;
+      color: #e8e9e2;
       text-align: center;
-      padding: 10px 16px;
+      padding: 10px 20px;
       font-size: 11px;
-      letter-spacing: 1.8px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
-    .nav-wrap {
+    .announcement span { color: #b8c69f; }
+
+    header {
+      height: 76px;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       position: sticky;
       top: 0;
       z-index: 50;
-      padding: 15px 5%;
-      background: rgba(245,243,237,.88);
+      background: rgba(247,247,244,.88);
       backdrop-filter: blur(18px);
-      border-bottom: 1px solid var(--line);
+      border-bottom: 1px solid rgba(0,0,0,.05);
     }
-    nav {
-      max-width: 1280px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+
     .logo {
-      font-family: Manrope, sans-serif;
+      font-family: var(--display);
       font-size: 25px;
       font-weight: 800;
       letter-spacing: 5px;
     }
-    .logo span { color: var(--olive); }
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
+
+    nav { display: flex; align-items: center; gap: 38px; }
+
+    nav a {
       font-size: 13px;
-      color: #555a50;
+      color: #51554d;
+      transition: color .2s;
     }
-    .nav-links a { transition: color .2s; }
-    .nav-links a:hover { color: var(--olive); }
+
+    nav a:hover { color: var(--green); }
+
     .nav-cta {
-      padding: 13px 20px;
+      border: 1px solid var(--ink);
       border-radius: 30px;
-      background: var(--dark);
-      color: white !important;
-      transition: .25s;
+      padding: 11px 19px;
+      color: var(--ink);
     }
-    .nav-cta:hover { background: var(--olive); transform: translateY(-2px); }
-    .menu-btn {
+
+    .nav-cta:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    .menu-toggle {
       display: none;
       border: 0;
       background: none;
       font-size: 25px;
       cursor: pointer;
-      color: var(--ink);
-    }
-
-    .container { max-width: 1280px; width: 90%; margin: auto; }
-    .eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--olive);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2.5px;
-      text-transform: uppercase;
-    }
-    .eyebrow:before {
-      content: "";
-      width: 25px;
-      height: 1px;
-      background: var(--olive);
     }
 
     .hero {
-      min-height: 690px;
-      padding: 90px 0 80px;
+      min-height: 710px;
+      padding: 105px 7% 90px;
       display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
       position: relative;
+      overflow: hidden;
     }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      align-items: center;
-      gap: 50px;
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--green);
+      font-weight: 700;
     }
-    h1, h2, h3 { font-family: Manrope, sans-serif; }
+
     .hero h1 {
-      font-size: clamp(52px, 7.2vw, 98px);
+      font-family: var(--display);
+      font-size: clamp(54px, 8.3vw, 112px);
       line-height: .99;
-      letter-spacing: -6px;
-      font-weight: 600;
-      margin: 30px 0;
-      max-width: 720px;
+      letter-spacing: -7px;
+      font-weight: 500;
+      max-width: 1050px;
+      margin: 28px auto 24px;
     }
+
     .hero h1 em {
       font-family: var(--serif);
       font-weight: 400;
-      color: var(--olive);
+      color: var(--green);
     }
+
     .hero-copy {
-      max-width: 440px;
       color: var(--muted);
+      max-width: 490px;
       font-size: 16px;
       line-height: 1.9;
     }
+
     .hero-actions {
       display: flex;
-      gap: 14px;
       align-items: center;
-      flex-wrap: wrap;
+      gap: 14px;
       margin-top: 34px;
     }
+
     .btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      padding: 16px 23px;
       border-radius: 40px;
-      background: var(--dark);
-      color: white;
+      padding: 15px 25px;
       font-size: 13px;
       font-weight: 600;
-      border: 1px solid var(--dark);
-      transition: .3s;
+      transition: transform .25s, background .25s, color .25s;
       cursor: pointer;
     }
-    .btn:hover { background: var(--olive); border-color: var(--olive); transform: translateY(-3px); }
-    .btn-light {
-      color: var(--ink);
-      background: transparent;
-      border-color: var(--line);
-    }
-    .btn-light:hover { color: white; }
 
-    .art-stage {
-      height: 490px;
-      position: relative;
-      display: grid;
-      place-items: center;
-      isolation: isolate;
-    }
-    .art-orbit {
-      position: absolute;
-      width: 410px;
-      height: 410px;
-      border: 1px solid rgba(98,109,69,.3);
-      border-radius: 50%;
-      animation: orbit 35s linear infinite;
-    }
-    .art-orbit:before, .art-orbit:after {
-      content: "";
-      position: absolute;
-      border: 1px solid rgba(98,109,69,.22);
-      border-radius: 50%;
-      inset: 32px;
-    }
-    .art-orbit:after { inset: 70px; }
-    .art-core {
-      width: 265px;
-      height: 330px;
-      position: relative;
-      border-radius: 48% 48% 44% 44%;
-      background: linear-gradient(145deg,#dce4b8,#a8b28a 55%,#68764f);
-      transform: rotate(-13deg);
-      box-shadow: 30px 35px 80px rgba(75,87,51,.2);
-      transition: transform .7s cubic-bezier(.2,.8,.2,1);
-    }
-    .art-stage:hover .art-core { transform: rotate(0deg) scale(1.06); }
-    .art-core:before {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      background: rgba(255,255,255,.27);
-      top: 45px;
-      left: 40px;
-      filter: blur(3px);
-    }
-    .art-core:after {
-      content: "";
-      position: absolute;
-      width: 100px;
-      height: 250px;
-      border-radius: 50%;
-      background: rgba(35,47,30,.15);
-      right: 22px;
-      top: 40px;
-      transform: rotate(28deg);
-      filter: blur(8px);
-    }
-    .floating-note {
-      position: absolute;
-      z-index: 2;
-      background: rgba(255,254,250,.88);
-      border: 1px solid rgba(32,37,31,.08);
-      box-shadow: 0 15px 45px rgba(32,37,31,.08);
-      border-radius: 14px;
-      padding: 15px 18px;
-      font-size: 12px;
-      backdrop-filter: blur(12px);
-    }
-    .floating-note strong { display: block; font-size: 14px; margin-bottom: 4px; }
-    .note-one { top: 65px; right: 0; }
-    .note-two { bottom: 65px; left: 0; }
-    @keyframes orbit { to { transform: rotate(360deg); } }
+    .btn:hover { transform: translateY(-3px); }
 
-    .intro-strip {
-      background: var(--dark);
-      color: white;
-      padding: 30px 0;
-    }
-    .intro-inner {
+    .btn-dark { background: var(--ink); color: white; }
+    .btn-dark:hover { background: var(--green); }
+    .btn-light { border: 1px solid #d5d7ce; }
+    .btn-light:hover { background: white; }
+
+    .hero-art {
+      width: min(680px, 85vw);
+      height: 205px;
+      margin-top: 65px;
+      position: relative;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 25px;
+      justify-content: center;
     }
-    .intro-inner p {
-      color: #d2d7c7;
-      font-family: var(--serif);
-      font-size: clamp(20px, 3vw, 31px);
-    }
-    .intro-mark { color: var(--lime); font-size: 28px; }
 
-    section { padding: 115px 0; }
+    .orb {
+      position: absolute;
+      width: 190px;
+      height: 190px;
+      border-radius: 50%;
+      filter: blur(.2px);
+      box-shadow: inset -25px -25px 55px rgba(0,0,0,.12),
+                  inset 15px 15px 45px rgba(255,255,255,.45),
+                  0 30px 65px rgba(40,50,30,.10);
+    }
+
+    .orb-one {
+      left: 20%;
+      background: radial-gradient(circle at 30% 25%, #dce4ce, #83966d 65%, #59664b);
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .orb-two {
+      right: 20%;
+      background: radial-gradient(circle at 30% 25%, #eee9db, #c5bba3 65%, #968b72);
+      animation: float 8s ease-in-out infinite reverse;
+    }
+
+    .orb-center {
+      width: 115px;
+      height: 115px;
+      z-index: 2;
+      background: radial-gradient(circle at 30% 25%, #f8f8ed, #b9c2a8 65%, #78846b);
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-15px) rotate(5deg); }
+    }
+
+    .scroll-note {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #96998f;
+    }
+
+    .statement {
+      background: var(--dark);
+      color: white;
+      padding: 105px 10%;
+      text-align: center;
+    }
+
+    .statement p {
+      max-width: 1000px;
+      margin: auto;
+      font-family: var(--display);
+      font-size: clamp(30px, 5vw, 62px);
+      line-height: 1.25;
+      letter-spacing: -2.5px;
+      font-weight: 500;
+    }
+
+    .statement em { color: #b6c39d; font-family: var(--serif); }
+
+    .section {
+      padding: 125px 9%;
+    }
+
     .section-heading {
       display: flex;
       justify-content: space-between;
       align-items: end;
-      gap: 35px;
+      gap: 30px;
       margin-bottom: 55px;
     }
+
     .section-heading h2 {
-      font-size: clamp(38px, 5.2vw, 65px);
-      line-height: 1.08;
-      letter-spacing: -3px;
-      font-weight: 600;
-      margin-top: 20px;
+      font-family: var(--display);
+      font-size: clamp(42px, 6vw, 72px);
+      font-weight: 500;
+      letter-spacing: -4px;
+      line-height: 1.05;
+      margin-top: 18px;
     }
-    .section-heading h2 em {
-      color: var(--olive);
-      font-family: var(--serif);
-      font-weight: 400;
-    }
+
     .section-heading > p {
-      max-width: 350px;
       color: var(--muted);
       line-height: 1.8;
+      max-width: 350px;
       font-size: 14px;
     }
 
@@ -301,250 +282,368 @@
       gap: 80px;
       align-items: center;
     }
+
     .about-visual {
-      min-height: 480px;
-      border-radius: 4px;
-      background: #e6e8dc;
+      min-height: 470px;
+      border-radius: 5px;
       position: relative;
       overflow: hidden;
-      display: grid;
-      place-items: center;
+      background: linear-gradient(140deg, #e9e9df, #d8ddce 55%, #b3bea2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .about-shape {
-      width: 280px;
-      height: 350px;
-      border-radius: 50% 50% 8px 8px;
-      background: linear-gradient(150deg,#c3ce9f,#718057);
-      transform: rotate(15deg);
-      box-shadow: 30px 30px 0 rgba(98,109,69,.12);
-      transition: transform .7s;
-    }
-    .about-visual:hover .about-shape { transform: rotate(0deg) scale(1.06); }
-    .about-stamp {
+
+    .about-visual::before,
+    .about-visual::after {
+      content: "";
       position: absolute;
-      bottom: 28px;
-      left: 28px;
-      padding: 18px 20px;
-      background: var(--white);
-      font-family: var(--serif);
-      font-size: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(70,85,56,.22);
+      width: 340px;
+      height: 340px;
     }
-    .about-copy h3 {
-      font-size: clamp(27px,3vw,39px);
-      font-weight: 600;
-      line-height: 1.25;
+
+    .about-visual::after {
+      width: 240px;
+      height: 240px;
+    }
+
+    .about-shape {
+      width: 180px;
+      height: 250px;
+      background: linear-gradient(145deg, #a9b798, #5d7050);
+      border-radius: 100px 100px 12px 12px;
+      transform: rotate(38deg);
+      box-shadow: 25px 25px 55px rgba(50,65,40,.2);
+    }
+
+    .about-content h3 {
+      font-family: var(--display);
+      font-size: 34px;
+      font-weight: 500;
       letter-spacing: -1.5px;
-      margin-bottom: 25px;
+      line-height: 1.25;
+      margin-bottom: 24px;
     }
-    .about-copy p {
+
+    .about-content p {
       color: var(--muted);
       line-height: 1.95;
-      font-size: 15px;
-      margin-bottom: 18px;
+      font-size: 14px;
+      margin-bottom: 19px;
     }
-    .principles {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 22px;
-      margin-top: 35px;
-    }
-    .principle {
-      border-top: 1px solid var(--line);
-      padding-top: 17px;
-    }
-    .principle span { color: var(--olive); font-size: 11px; letter-spacing: 1px; }
-    .principle strong { display: block; margin-top: 8px; font-size: 14px; }
 
-    .network-section { background: var(--dark); color: white; }
-    .network-section .eyebrow { color: var(--lime); }
-    .network-section .eyebrow:before { background: var(--lime); }
-    .network-section .section-heading h2 em { color: var(--lime); }
-    .network-section .section-heading > p { color: #b9c0b2; }
-    .network-grid {
-      display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 16px;
+    .text-link {
+      display: inline-flex;
+      gap: 12px;
+      align-items: center;
+      margin-top: 17px;
+      font-size: 13px;
+      font-weight: 700;
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 7px;
     }
-    .network-card {
-      min-height: 270px;
-      border: 1px solid rgba(255,255,255,.17);
-      padding: 30px;
+
+    .network {
+      background: #e9eae3;
+      padding: 125px 9%;
+    }
+
+    .network-top {
       display: flex;
-      flex-direction: column;
       justify-content: space-between;
-      transition: .35s;
-      background: rgba(255,255,255,.025);
+      align-items: start;
+      gap: 35px;
     }
-    .network-card:hover {
-      background: rgba(213,229,140,.09);
-      border-color: var(--lime);
-      transform: translateY(-7px);
+
+    .network h2 {
+      font-family: var(--display);
+      font-size: clamp(48px, 7vw, 85px);
+      letter-spacing: -5px;
+      font-weight: 500;
+      line-height: 1;
+      max-width: 650px;
+      margin-top: 20px;
     }
-    .network-card .number { color: var(--lime); font-size: 12px; letter-spacing: 2px; }
-    .network-card h3 { font-size: 25px; font-weight: 500; margin: 25px 0 12px; }
-    .network-card p { color: #b9c0b2; font-size: 13px; line-height: 1.8; }
-    .network-card .arrow { align-self: end; font-size: 23px; color: var(--lime); }
+
+    .network-description {
+      max-width: 340px;
+      color: #666c60;
+      line-height: 1.9;
+      font-size: 14px;
+      padding-top: 45px;
+    }
+
+    .network-panel {
+      margin-top: 75px;
+      background: #dfe2d6;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 45px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .network-panel::before,
+    .network-panel::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(80,100,65,.18);
+      border-radius: 50%;
+    }
+
+    .network-panel::after { width: 430px; height: 430px; }
+
+    .network-panel p {
+      position: relative;
+      z-index: 2;
+      max-width: 570px;
+      font-family: var(--display);
+      font-size: clamp(23px, 3.5vw, 38px);
+      line-height: 1.4;
+      letter-spacing: -1px;
+    }
 
     .approach-grid {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
-      gap: 35px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 55px;
     }
-    .approach-card { border-top: 1px solid var(--line); padding-top: 25px; }
-    .approach-card .number { font-family: var(--serif); font-size: 42px; color: var(--olive); }
-    .approach-card h3 { font-size: 22px; margin: 24px 0 12px; font-weight: 600; }
-    .approach-card p { color: var(--muted); font-size: 14px; line-height: 1.9; }
 
-    .referral-section { background: #e9eadf; }
+    .approach-card {
+      background: white;
+      padding: 35px 30px;
+      min-height: 245px;
+      border: 1px solid #ededeb;
+      transition: transform .3s, box-shadow .3s;
+    }
+
+    .approach-card:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 50px rgba(20,30,15,.06);
+    }
+
+    .card-number {
+      font-size: 11px;
+      color: var(--green);
+      letter-spacing: 2px;
+    }
+
+    .approach-card h3 {
+      font-family: var(--display);
+      font-size: 24px;
+      font-weight: 600;
+      margin: 35px 0 12px;
+      letter-spacing: -.8px;
+    }
+
+    .approach-card p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .referral {
+      background: var(--dark);
+      color: white;
+      padding: 125px 9%;
+    }
+
     .referral-grid {
       display: grid;
-      grid-template-columns: .8fr 1.2fr;
-      gap: 90px;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 100px;
       align-items: start;
     }
-    .referral-intro h2 {
-      font-size: clamp(42px,5vw,65px);
-      line-height: 1.05;
-      letter-spacing: -3px;
-      margin: 22px 0;
-    }
-    .referral-intro h2 em { font-family: var(--serif); color: var(--olive); font-weight: 400; }
-    .referral-intro p { color: var(--muted); font-size: 15px; line-height: 1.9; }
-    .form-card {
-      background: var(--white);
-      padding: 42px;
-      box-shadow: 0 25px 65px rgba(32,37,31,.06);
-    }
-    .form-card h3 { font-size: 24px; margin-bottom: 8px; }
-    .form-card > p { color: var(--muted); font-size: 13px; margin-bottom: 28px; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .field { display: flex; flex-direction: column; gap: 9px; margin-bottom: 20px; }
-    .field.full { grid-column: 1/-1; }
-    .field label { font-size: 12px; font-weight: 700; color: #555a50; }
-    .field input, .field textarea, .field select {
-      width: 100%;
-      border: 1px solid #e1e2d9;
-      background: #fbfbf8;
-      padding: 14px 15px;
-      outline: none;
-      color: var(--ink);
-      border-radius: 2px;
-      transition: border .2s, box-shadow .2s;
-      font-size: 13px;
-    }
-    .field input:focus, .field textarea:focus, .field select:focus {
-      border-color: var(--olive);
-      box-shadow: 0 0 0 3px rgba(98,109,69,.1);
-    }
-    .field textarea { min-height: 115px; resize: vertical; }
-    .consent {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.6;
-      margin: 3px 0 23px;
-    }
-    .consent input { margin-top: 3px; accent-color: var(--olive); }
-    .submit-btn { width: 100%; border: 0; }
-    .form-status { font-size: 13px; margin-top: 16px; line-height: 1.6; }
-    .form-status.success { color: #3d6d38; }
-    .form-status.error { color: #a13c32; }
-    .honeypot { position: absolute; left: -5000px; opacity: 0; }
 
-    .closing {
-      padding: 100px 0;
-      text-align: center;
-      background: var(--paper);
-    }
-    .closing h2 {
-      max-width: 800px;
-      margin: 20px auto 30px;
-      font-size: clamp(42px,6vw,76px);
+    .referral h2 {
+      font-family: var(--display);
+      font-size: clamp(45px, 6vw, 72px);
       line-height: 1.05;
       letter-spacing: -4px;
-      font-weight: 600;
+      font-weight: 500;
+      margin: 20px 0 25px;
     }
-    .closing h2 em { color: var(--olive); font-family: var(--serif); font-weight: 400; }
 
-    footer { background: var(--dark); color: white; padding: 35px 5%; }
-    .footer-inner {
-      max-width: 1280px;
-      margin: auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
+    .referral-intro p {
+      color: #aeb3a8;
+      font-size: 14px;
+      line-height: 1.9;
+      max-width: 360px;
     }
-    footer .logo { font-size: 21px; }
-    footer p { color: #b9c0b2; font-size: 12px; }
-    .footer-links { display: flex; gap: 23px; font-size: 12px; color: #d2d7c7; }
-    .footer-links a:hover { color: var(--lime); }
+
+    .referral-intro .eyebrow { color: #b9c69f; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 23px 18px;
+    }
+
+    .field { display: flex; flex-direction: column; gap: 10px; }
+    .field.full { grid-column: 1 / -1; }
+
+    .field label {
+      color: #c8ccc1;
+      font-size: 11px;
+      letter-spacing: .8px;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      background: #222821;
+      border: 1px solid #394138;
+      color: white;
+      padding: 15px 14px;
+      outline: none;
+      border-radius: 2px;
+      font-size: 13px;
+      transition: border .2s;
+    }
+
+    .field input:focus,
+    .field select:focus,
+    .field textarea:focus { border-color: #a9b994; }
+
+    .field input::placeholder,
+    .field textarea::placeholder { color: #858d80; }
+
+    .field select { color: #c8ccc1; }
+    .field select option { background: #222821; }
+    .field textarea { min-height: 115px; resize: vertical; }
+
+    .consent {
+      display: flex;
+      gap: 11px;
+      align-items: flex-start;
+      color: #b6bcb0;
+      font-size: 12px;
+      line-height: 1.7;
+      grid-column: 1 / -1;
+    }
+
+    .consent input { margin-top: 3px; accent-color: #a9b994; }
+
+    .submit-btn {
+      border: 0;
+      background: #dce3d1;
+      color: #1b2118;
+      padding: 16px 26px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      width: fit-content;
+      transition: background .2s, transform .2s;
+    }
+
+    .submit-btn:hover { background: white; transform: translateY(-2px); }
+    .submit-btn:disabled { opacity: .6; cursor: wait; }
+
+    .form-status {
+      font-size: 13px;
+      line-height: 1.7;
+      grid-column: 1 / -1;
+    }
+
+    .form-status.success { color: #c7ddb0; }
+    .form-status.error { color: #ffb5a9; }
+
+    .honeypot {
+      position: absolute;
+      left: -9999px;
+      opacity: 0;
+    }
+
+    footer {
+      background: var(--dark);
+      border-top: 1px solid #343a32;
+      padding: 35px 9%;
+      color: #a9afa3;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: 11px;
+    }
+
+    .footer-logo {
+      color: white;
+      font-family: var(--display);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 4px;
+    }
 
     .reveal {
       opacity: 0;
       transform: translateY(25px);
-      transition: opacity .75s ease, transform .75s ease;
+      transition: opacity .8s ease, transform .8s ease;
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     @media (max-width: 850px) {
-      .hero-grid, .about-grid, .referral-grid { grid-template-columns: 1fr; gap: 45px; }
-      .hero { padding-top: 65px; }
-      .hero h1 { letter-spacing: -3px; }
-      .art-stage { height: 400px; }
-      .art-orbit { width: 330px; height: 330px; }
-      .art-core { width: 220px; height: 275px; }
-      .section-heading { align-items: start; flex-direction: column; }
-      .network-grid { grid-template-columns: 1fr 1fr; }
-      .referral-grid { gap: 35px; }
-    }
-    @media (max-width: 600px) {
-      .nav-wrap { padding: 13px 5%; }
-      .menu-btn { display: block; }
-      .nav-links {
+      header { padding: 0 6%; }
+      .menu-toggle { display: block; }
+      nav {
         display: none;
         position: absolute;
-        top: 100%;
+        top: 76px;
         left: 0;
-        right: 0;
-        background: var(--paper);
-        padding: 25px 5% 30px;
+        width: 100%;
+        background: var(--bg);
+        padding: 25px 7%;
         flex-direction: column;
-        align-items: stretch;
-        gap: 22px;
+        align-items: flex-start;
+        gap: 24px;
         border-bottom: 1px solid var(--line);
       }
-      .nav-links.open { display: flex; }
-      .nav-cta { text-align: center; }
-      .hero { min-height: auto; padding: 60px 0; }
-      .hero h1 { font-size: 55px; }
-      .art-stage { height: 340px; }
-      .art-orbit { width: 285px; height: 285px; }
-      .art-core { width: 185px; height: 240px; }
-      .note-one { right: -5px; top: 25px; }
-      .note-two { left: -5px; bottom: 25px; }
-      section { padding: 78px 0; }
-      .network-grid, .approach-grid { grid-template-columns: 1fr; }
-      .network-card { min-height: 225px; }
-      .form-card { padding: 25px 20px; }
-      .form-grid { grid-template-columns: 1fr; gap: 0; }
-      .field.full { grid-column: auto; }
-      .intro-inner { align-items: flex-start; }
-      .intro-mark { display: none; }
-      .about-visual { min-height: 360px; }
-      .about-shape { width: 220px; height: 275px; }
-      .closing h2 { letter-spacing: -2px; }
-      .footer-inner { flex-direction: column; align-items: flex-start; }
+      nav.open { display: flex; }
+      .hero { min-height: 650px; padding-top: 90px; }
+      .hero h1 { letter-spacing: -4px; }
+      .section, .network, .referral { padding: 90px 7%; }
+      .about-grid, .referral-grid { grid-template-columns: 1fr; gap: 45px; }
+      .about-visual { min-height: 350px; }
+      .network-top { flex-direction: column; }
+      .network-description { padding-top: 0; }
+      .approach-grid { grid-template-columns: 1fr; }
+      .referral-grid { gap: 50px; }
+    }
+
+    @media (max-width: 560px) {
+      .announcement { font-size: 9px; }
+      .hero { padding: 80px 6% 75px; min-height: 600px; }
+      .hero h1 { font-size: 57px; letter-spacing: -3.5px; }
+      .hero-copy { font-size: 14px; }
+      .hero-art { height: 155px; margin-top: 50px; }
+      .orb { width: 135px; height: 135px; }
+      .orb-center { width: 85px; height: 85px; }
+      .statement { padding: 80px 8%; }
+      .statement p { letter-spacing: -1px; }
+      .section-heading { flex-direction: column; align-items: flex-start; }
+      .section-heading h2, .network h2 { letter-spacing: -3px; }
+      .form-grid { grid-template-columns: 1fr; }
+      .field.full, .consent, .form-status { grid-column: auto; }
+      footer { flex-direction: column; align-items: flex-start; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      *, *:before, *:after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
+      *, *::before, *::after {
         scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
         transition-duration: .01ms !important;
       }
       .reveal { opacity: 1; transform: none; }
@@ -553,298 +652,249 @@
 </head>
 
 <body>
-  <div class="announcement">Thoughtful connections. Meaningful possibilities.</div>
-
-  <div class="nav-wrap">
-    <nav>
-      <a href="#home" class="logo">LUM<span>O</span>RA</a>
-      <button class="menu-btn" id="menuBtn" aria-label="Open navigation" aria-expanded="false">☰</button>
-      <div class="nav-links" id="navLinks">
-        <a href="#about">About</a>
-        <a href="#network">Our Network</a>
-        <a href="#approach">Our Approach</a>
-        <a href="#referral" class="nav-cta">Make a Connection ↗</a>
-      </div>
-    </nav>
+  <div class="announcement">
+    A space for meaningful connections <span>·</span> Welcome to LUMORA
   </div>
 
+  <header>
+    <a href="#home" class="logo">LUMORA</a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">☰</button>
+    <nav id="navigation">
+      <a href="#about">About</a>
+      <a href="#network">Our Network</a>
+      <a href="#approach">Our Approach</a>
+      <a href="#connect" class="nav-cta">Make a Connection ↗</a>
+    </nav>
+  </header>
+
   <main>
-    <header class="hero" id="home">
-      <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow">A world of possibilities</div>
-          <h1>Where people meet <em>possibility.</em></h1>
-          <p class="hero-copy">
-            We believe meaningful opportunities begin with meaningful connections.
-            LUMORA brings people, ideas, and possibilities closer together.
-          </p>
-          <div class="hero-actions">
-            <a class="btn" href="#about">Discover LUMORA <span>↗</span></a>
-            <a class="btn btn-light" href="#referral">Introduce someone</a>
-          </div>
-        </div>
+    <section class="hero" id="home">
+      <div class="eyebrow">A different kind of connection</div>
+      <h1>Where people<br>meet <em>possibility.</em></h1>
+      <p class="hero-copy">
+        We believe the right introduction can open doors,
+        create opportunities, and bring meaningful ideas to life.
+      </p>
 
-        <div class="art-stage reveal" aria-label="Abstract LUMORA artwork">
-          <div class="art-orbit"></div>
-          <div class="art-core"></div>
-          <div class="floating-note note-one">
-            <strong>People first.</strong>
-            <span>Every connection matters.</span>
-          </div>
-          <div class="floating-note note-two">
-            <strong>Possibilities ahead ↗</strong>
-            <span>Ideas become opportunities.</span>
-          </div>
-        </div>
+      <div class="hero-actions">
+        <a class="btn btn-dark" href="#connect">Start a Connection ↗</a>
+        <a class="btn btn-light" href="#about">Discover LUMORA</a>
       </div>
-    </header>
 
-    <div class="intro-strip">
-      <div class="container intro-inner">
-        <p>Good things happen when the right people connect.</p>
-        <span class="intro-mark">✳</span>
+      <div class="hero-art" aria-hidden="true">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-center"></div>
       </div>
-    </div>
 
-    <section id="about">
-      <div class="container">
-        <div class="about-grid">
-          <div class="about-visual reveal">
-            <div class="about-shape"></div>
-            <div class="about-stamp">Built around people. Always.</div>
-          </div>
-
-          <div class="about-copy reveal">
-            <div class="eyebrow">01 — About us</div>
-            <h3>Connection is more than an introduction. It's where possibility begins.</h3>
-            <p>
-              LUMORA is built around a simple belief: the right connection can
-              create something meaningful. We bring people and opportunities
-              closer through thoughtful introductions and an open approach to collaboration.
-            </p>
-            <p>
-              Our focus is on building relationships with purpose, understanding
-              what matters, and creating room for possibilities to grow.
-            </p>
-
-            <div class="principles">
-              <div class="principle">
-                <span>01 / PEOPLE</span>
-                <strong>Relationships first</strong>
-              </div>
-              <div class="principle">
-                <span>02 / PURPOSE</span>
-                <strong>Intentional connections</strong>
-              </div>
-              <div class="principle">
-                <span>03 / TRUST</span>
-                <strong>Thoughtful collaboration</strong>
-              </div>
-              <div class="principle">
-                <span>04 / GROWTH</span>
-                <strong>Meaningful possibilities</strong>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <div class="scroll-note">Scroll to explore ↓</div>
     </section>
 
-    <section class="network-section" id="network">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="eyebrow">02 — Our network</div>
-            <h2>Better together.<br><em>Stronger through connection.</em></h2>
-          </div>
+    <section class="statement">
+      <p class="reveal">
+        Great things rarely happen in isolation.
+        They begin with <em>people, trust,</em> and the
+        possibilities created when the right minds connect.
+      </p>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">01 — About LUMORA</div>
+          <h2>Built around<br>people.</h2>
+        </div>
+        <p>
+          A thoughtful space where relationships come first
+          and opportunities grow through meaningful connections.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-visual reveal">
+          <div class="about-shape"></div>
+        </div>
+
+        <div class="about-content reveal">
+          <h3>Every meaningful opportunity starts with a conversation.</h3>
           <p>
-            We value relationships across a growing network of people,
-            businesses, and collaborators. Every relationship starts with
-            understanding and trust.
+            LUMORA is founded on a simple belief: connections matter.
+            Behind every opportunity is a person, a perspective,
+            and a possibility waiting to be explored.
           </p>
-        </div>
-
-        <div class="network-grid">
-          <article class="network-card reveal">
-            <span class="number">01 / CLIENTS</span>
-            <div>
-              <h3>Client relationships</h3>
-              <p>Building lasting relationships through shared goals, communication, and trust.</p>
-            </div>
-            <span class="arrow">↗</span>
-          </article>
-
-          <article class="network-card reveal">
-            <span class="number">02 / PARTNERS</span>
-            <div>
-              <h3>Collaborative partners</h3>
-              <p>Connecting with people and organizations who believe in working together.</p>
-            </div>
-            <span class="arrow">↗</span>
-          </article>
-
-          <article class="network-card reveal">
-            <span class="number">03 / COMMUNITY</span>
-            <div>
-              <h3>People & possibilities</h3>
-              <p>Creating space for introductions, shared ideas, and future opportunities.</p>
-            </div>
-            <span class="arrow">↗</span>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="approach">
-      <div class="container">
-        <div class="section-heading reveal">
-          <div>
-            <div class="eyebrow">03 — Our approach</div>
-            <h2>Simple steps.<br><em>Meaningful outcomes.</em></h2>
-          </div>
           <p>
-            We keep the process human, clear, and intentional.
-            Good relationships deserve a thoughtful beginning.
+            We value thoughtful introductions, genuine relationships,
+            and the potential that emerges when people come together
+            with shared intent.
           </p>
-        </div>
-
-        <div class="approach-grid">
-          <article class="approach-card reveal">
-            <span class="number">01</span>
-            <h3>Understand</h3>
-            <p>We start by understanding the people, goals, and opportunities behind every introduction.</p>
-          </article>
-          <article class="approach-card reveal">
-            <span class="number">02</span>
-            <h3>Connect</h3>
-            <p>We bring the right people closer through thoughtful introductions and open communication.</p>
-          </article>
-          <article class="approach-card reveal">
-            <span class="number">03</span>
-            <h3>Grow</h3>
-            <p>We believe strong connections can develop into long-term relationships and new possibilities.</p>
-          </article>
+          <a href="#connect" class="text-link">Let's connect <span>↗</span></a>
         </div>
       </div>
     </section>
 
-    <section class="referral-section" id="referral">
-      <div class="container referral-grid">
+    <section class="network" id="network">
+      <div class="network-top reveal">
+        <div>
+          <div class="eyebrow">02 — Our Network</div>
+          <h2>Better together.<br>Always.</h2>
+        </div>
+        <p class="network-description">
+          Our network is built through relationships and shared
+          possibilities. We believe in creating connections that
+          bring people, organizations, and ideas closer together.
+        </p>
+      </div>
+
+      <div class="network-panel reveal">
+        <p>
+          A growing network. Different perspectives.
+          One belief in the power of <em>connection.</em>
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="approach">
+      <div class="section-heading reveal">
+        <div>
+          <div class="eyebrow">03 — Our Approach</div>
+          <h2>Simple by design.<br>Meaningful by nature.</h2>
+        </div>
+        <p>
+          The best connections are not forced.
+          They are thoughtful, relevant, and built on trust.
+        </p>
+      </div>
+
+      <div class="approach-grid">
+        <article class="approach-card reveal">
+          <div class="card-number">01 / PEOPLE FIRST</div>
+          <h3>Understand</h3>
+          <p>
+            Every connection begins by understanding people,
+            their goals, and what matters to them.
+          </p>
+        </article>
+
+        <article class="approach-card reveal">
+          <div class="card-number">02 / THOUGHTFUL ACTION</div>
+          <h3>Connect</h3>
+          <p>
+            We value introductions that make sense,
+            create relevance, and bring people together.
+          </p>
+        </article>
+
+        <article class="approach-card reveal">
+          <div class="card-number">03 / LONG-TERM VALUE</div>
+          <h3>Grow</h3>
+          <p>
+            A great introduction is only the beginning.
+            Meaningful relationships create lasting possibilities.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="referral" id="connect">
+      <div class="referral-grid">
         <div class="referral-intro reveal">
-          <div class="eyebrow">04 — Make a connection</div>
-          <h2>Know someone? Let's make a <em>connection.</em></h2>
+          <div class="eyebrow">04 — Make an Introduction</div>
+          <h2>Know someone<br>we should<br><em>meet?</em></h2>
           <p>
-            Great opportunities often start with a simple introduction.
-            Share a person, a business, or an opportunity you think we should know about.
-            We'll take it from there.
+            Good connections deserve to be shared.
+            Tell us a little about the person or opportunity
+            you'd like to introduce. We'll take it from there.
           </p>
         </div>
 
-        <div class="form-card reveal">
-          <h3>Make an introduction</h3>
-          <p>Share a few details to get the conversation started.</p>
+        <form id="referralForm" class="form-grid reveal">
+          <div class="field">
+            <label for="name">YOUR NAME *</label>
+            <input id="name" name="Referrer Name" type="text" placeholder="Your full name" required>
+          </div>
 
-          <form id="referralForm">
-            <div class="honeypot" aria-hidden="true">
-              <label>Leave this field empty
-                <input type="text" name="_honey" tabindex="-1" autocomplete="off">
-              </label>
-            </div>
+          <div class="field">
+            <label for="email">YOUR EMAIL *</label>
+            <input id="email" name="Referrer Email" type="email" placeholder="you@example.com" required>
+          </div>
 
-            <input type="hidden" name="_subject" value="New LUMORA Website Introduction">
-            <input type="hidden" name="_template" value="table">
+          <div class="field">
+            <label for="phone">PHONE NUMBER</label>
+            <input id="phone" name="Phone" type="tel" placeholder="Your contact number">
+          </div>
 
-            <div class="form-grid">
-              <div class="field">
-                <label for="name">Your name *</label>
-                <input id="name" name="Referrer Name" type="text" placeholder="Full name" required maxlength="100">
-              </div>
-              <div class="field">
-                <label for="email">Your email *</label>
-                <input id="email" name="Referrer Email" type="email" placeholder="you@example.com" required maxlength="150">
-              </div>
-              <div class="field">
-                <label for="phone">Phone number</label>
-                <input id="phone" name="Phone" type="tel" placeholder="Your phone number" maxlength="30">
-              </div>
-              <div class="field">
-                <label for="type">Type of connection *</label>
-                <select id="type" name="Connection Type" required>
-                  <option value="">Select one</option>
-                  <option>Professional introduction</option>
-                  <option>Business opportunity</option>
-                  <option>Potential collaboration</option>
-                  <option>Client or partner referral</option>
-                  <option>Other</option>
-                </select>
-              </div>
-              <div class="field full">
-                <label for="link">Person / company / opportunity link</label>
-                <input id="link" name="Reference Link" type="url" placeholder="https://">
-              </div>
-              <div class="field full">
-                <label for="message">Tell us a little more *</label>
-                <textarea id="message" name="Introduction Details" placeholder="Who would you like to introduce, and why?" required maxlength="2000"></textarea>
-              </div>
-            </div>
+          <div class="field">
+            <label for="type">TYPE OF CONNECTION *</label>
+            <select id="type" name="Connection Type" required>
+              <option value="">Select an option</option>
+              <option>Professional Introduction</option>
+              <option>Business Opportunity</option>
+              <option>Talent / Candidate Referral</option>
+              <option>Partnership</option>
+              <option>Other</option>
+            </select>
+          </div>
 
-            <label class="consent">
-              <input type="checkbox" name="Consent" value="Yes" required>
-              <span>I confirm that I have permission to share this introduction and agree to be contacted about it.</span>
-            </label>
+          <div class="field full">
+            <label for="link">PERSON / OPPORTUNITY LINK</label>
+            <input id="link" name="Reference Link" type="url" placeholder="LinkedIn profile or website URL">
+          </div>
 
-            <button class="btn submit-btn" id="submitBtn" type="submit">
-              Send introduction <span>↗</span>
-            </button>
-            <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
-          </form>
-        </div>
-      </div>
-    </section>
+          <div class="field full">
+            <label for="message">TELL US A LITTLE MORE *</label>
+            <textarea id="message" name="Introduction Details" placeholder="Share a few details about this introduction..." required></textarea>
+          </div>
 
-    <section class="closing">
-      <div class="container reveal">
-        <div class="eyebrow" style="justify-content:center">The next connection starts here</div>
-        <h2>Every meaningful journey begins with <em>one connection.</em></h2>
-        <a href="#referral" class="btn">Start a conversation ↗</a>
+          <div class="honeypot" aria-hidden="true">
+            <label for="website">Leave this field empty</label>
+            <input id="website" name="_honey" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <input type="hidden" name="_subject" value="New LUMORA Introduction">
+          <input type="hidden" name="_template" value="table">
+
+          <label class="consent">
+            <input type="checkbox" name="Consent" value="Yes" required>
+            <span>I confirm that I have permission to share this introduction and the information provided.</span>
+          </label>
+
+          <button class="submit-btn" id="submitButton" type="submit">
+            Send Introduction ↗
+          </button>
+
+          <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="footer-inner">
-      <a href="#home" class="logo">LUM<span>O</span>RA</a>
-      <p>Thoughtful connections. Meaningful possibilities.</p>
-      <div class="footer-links">
-        <a href="#about">About</a>
-        <a href="#network">Our Network</a>
-        <a href="#referral">Connect</a>
-      </div>
-      <p>© <span id="year"></span> LUMORA. All rights reserved.</p>
-    </div>
+    <a href="#home" class="footer-logo">LUMORA</a>
+    <span>Thoughtful connections. Meaningful possibilities.</span>
+    <span>© <span id="year"></span> LUMORA. All rights reserved.</span>
   </footer>
 
   <script>
     // Mobile navigation
-    const menuBtn = document.getElementById("menuBtn");
-    const navLinks = document.getElementById("navLinks");
+    const menuToggle = document.getElementById("menuToggle");
+    const navigation = document.getElementById("navigation");
 
-    menuBtn.addEventListener("click", () => {
-      const isOpen = navLinks.classList.toggle("open");
-      menuBtn.setAttribute("aria-expanded", String(isOpen));
-      menuBtn.textContent = isOpen ? "×" : "☰";
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navigation.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", String(isOpen));
+      menuToggle.textContent = isOpen ? "×" : "☰";
     });
 
-    navLinks.querySelectorAll("a").forEach(link => {
+    navigation.querySelectorAll("a").forEach(link => {
       link.addEventListener("click", () => {
-        navLinks.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
-        menuBtn.textContent = "☰";
+        navigation.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
       });
     });
 
-    // Reveal elements as they enter the viewport
-    const revealObserver = new IntersectionObserver(entries => {
+    // Reveal sections as they enter the viewport
+    const revealObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible");
@@ -853,33 +903,30 @@
       });
     }, { threshold: 0.12 });
 
-    document.querySelectorAll(".reveal").forEach(el => revealObserver.observe(el));
+    document.querySelectorAll(".reveal").forEach(element => {
+      revealObserver.observe(element);
+    });
 
     // Footer year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Referral form
+    // Referral form submission
     const form = document.getElementById("referralForm");
-    const submitBtn = document.getElementById("submitBtn");
+    const submitButton = document.getElementById("submitButton");
     const formStatus = document.getElementById("formStatus");
 
-    form.addEventListener("submit", async event => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
 
       if (!form.reportValidity()) return;
 
-      const formData = new FormData(form);
+      const honeypot = form.querySelector('[name="_honey"]');
+      if (honeypot.value) return;
 
-      // Basic spam trap
-      if (formData.get("_honey")) {
-        formStatus.textContent = "Thank you.";
-        return;
-      }
-
-      submitBtn.disabled = true;
-      submitBtn.textContent = "Sending...";
+      submitButton.disabled = true;
+      submitButton.textContent = "Sending...";
+      formStatus.textContent = "";
       formStatus.className = "form-status";
-      formStatus.textContent = "Sending your introduction...";
 
       const controller = new AbortController();
       const timeout = setTimeout(() => controller.abort(), 15000);
@@ -889,7 +936,7 @@
           "https://formsubmit.co/ajax/pardhasaradhiganta02@gmail.com",
           {
             method: "POST",
-            body: formData,
+            body: new FormData(form),
             headers: { "Accept": "application/json" },
             signal: controller.signal
           }
@@ -898,21 +945,21 @@
         const result = await response.json();
 
         if (!response.ok || result.success === false) {
-          throw new Error("Submission was not accepted.");
+          throw new Error(result.message || "Unable to send your introduction.");
         }
 
-        formStatus.className = "form-status success";
-        formStatus.textContent = "Thank you! Your introduction has been submitted.";
         form.reset();
+        formStatus.textContent = "Thank you. Your introduction has been sent successfully. We appreciate you connecting with LUMORA.";
+        formStatus.classList.add("success");
       } catch (error) {
-        formStatus.className = "form-status error";
         formStatus.textContent = error.name === "AbortError"
           ? "The request timed out. Please try again."
-          : "We couldn't send your introduction right now. Please try again shortly.";
+          : "We couldn't send your introduction right now. Please try again in a moment.";
+        formStatus.classList.add("error");
       } finally {
         clearTimeout(timeout);
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = 'Send introduction <span>↗</span>';
+        submitButton.disabled = false;
+        submitButton.textContent = "Send Introduction ↗";
       }
     });
   </script>
